@@ -59,7 +59,6 @@ function formatDateWithNumbers(date: Date): string {
 export function UserDetails() {
   const { user } = useUser();
   const { session } = useSession();
-  const { organization } = useOrganization();
 
   if (!user || !session) return null;
 
@@ -137,30 +136,7 @@ export function UserDetails() {
             <PointerC label="session.expireAt" />
           </Row>
         </div>
-        {organization ? (
-          <>
-            <h2 className="mt-6 mb-4 text-[0.9375rem] font-semibold">
-              Organization detail
-            </h2>
-            <div className="px-2.5 bg-[#FAFAFB] rounded-lg divide-y divide-[#EEEEF0]">
-              <Row desc="Organization ID" value={organization.id}>
-                <PointerC label="organization.id" />
-              </Row>
-              <Row desc="Name" value={organization.name}>
-                <PointerC label="organization.name" />
-              </Row>
-              <Row desc="Members" value={String(organization.membersCount)}>
-                <PointerC label="organization.membersCount" />
-              </Row>
-              <Row
-                desc="Pending invitations"
-                value={String(organization.pendingInvitationsCount)}
-              >
-                <PointerC label="organization.pendingInvitationsCount" />
-              </Row>
-            </div>
-          </>
-        ) : null}
+        
       </div>
     </div>
   );
